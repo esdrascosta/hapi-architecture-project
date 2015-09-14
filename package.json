@@ -1,0 +1,20 @@
+{
+  "name": "hapi-project",
+  "version": "1.0.0",
+  "description": "Arquitetura basica para aplicações com Node e Hapi",
+  "main": "index.js",
+  "scripts": {
+    "debug": "./node_modules/.bin/nodemon --debug-brk index.js",
+    "dev": "./node_modules/.bin/nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "esc",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^10.0.0",
+    "hoek": "^2.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.5.0"
+  }
+}
