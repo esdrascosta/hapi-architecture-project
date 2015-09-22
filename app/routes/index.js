@@ -1,11 +1,8 @@
 var Hoek = require('hoek');
+var userRoutes = require('./user.js');
 
 // Array de arrays de todas as rotas no sistema;
 var route_array=[];
-
-var userRoutes = require('./user/user');
 route_array.push(userRoutes);
 
-module.exports = {
-	endpoints :	Hoek.flatten(route_array)
-}
+exports.endpoints = Hoek.flatten(route_array);
