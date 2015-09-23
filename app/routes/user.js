@@ -1,3 +1,4 @@
+//TODO utilizar joi para validação das rotas
 var User = require('../controllers').user;
 
 module.exports = [
