@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^10.0.0",
-    "hoek": "^2.15.0"
+    "hoek": "^2.15.0",
+    "sequelize": "^3.9.0"
   },
   "devDependencies": {
     "nodemon": "^1.5.0"

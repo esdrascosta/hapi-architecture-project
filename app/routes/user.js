@@ -1,4 +1,4 @@
-var User = require('../controllers').UserCtrl;
+var User = require('../controllers').user;
 
 module.exports = [
   { method: 'POST', path: '/user', handler: User.create},

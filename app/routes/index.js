@@ -1,8 +1,17 @@
+/**
+ *  Modulo que carrega as rotas dos arquivos
+ */
 var Hoek = require('hoek');
-var userRoutes = require('./user.js');
+var loader = require('../util/loader')
 
-// Array de arrays de todas as rotas no sistema;
+/**
+ * Array de array de todas as rotas no sistema
+ */
 var route_array=[];
-route_array.push(userRoutes);
+
+loader(__dirname,function(file){
+  var route = require('./'+file);
+  route_array.push(route);
+});
 
 exports.endpoints = Hoek.flatten(route_array);

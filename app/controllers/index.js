@@ -1,3 +1,10 @@
-var User = require('./user');
+var loader = require('../util/loader')
 
-exports.UserCtrl=User;
+var controllers= {}
+
+loader(__dirname,function(file){
+  var controllerName = file.substring(0,file.indexOf('.'));
+  controllers[controllerName] = require('./'+file);
+});
+
+module.exports = controllers;

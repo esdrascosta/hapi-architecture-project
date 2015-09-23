@@ -4,7 +4,7 @@ var Routes = require('./app/routes');
 
 server.connection({
 	host: 'localhost',
-	port: Number(process.argv[2] || 3000)
+	port: Number(process.env.PORT || 3000)
 });
 
 server.route(Routes.endpoints);
