@@ -1,6 +1,9 @@
-var loader = require('../util/loader')
+/**
+ * Carrega os controllers disponibilizado pelo nome do arquivo
+ */
+var loader = require('../util/loader');
 
-var controllers= {}
+var controllers = {};
 
 loader(__dirname,function(file){
   var controllerName = file.substring(0,file.indexOf('.'));

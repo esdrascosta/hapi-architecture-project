@@ -1,6 +1,7 @@
-var Hapi = require('hapi');
+var Hapi   = require('hapi');
 var server = new Hapi.Server();
 var Routes = require('./app/routes');
+var models = require("./app/models");
 
 server.connection({
 	host: 'localhost',
@@ -8,6 +9,8 @@ server.connection({
 });
 
 server.route(Routes.endpoints);
-server.start(function(){
-  console.log('Server running at: ', server.info.uri);
+models.sequelize.sync().then(function () {
+	server.start(function(){
+	  console.log('Server running at: ', server.info.uri);
+	});
 });

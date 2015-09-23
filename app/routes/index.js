@@ -1,7 +1,7 @@
 /**
  *  Modulo que carrega as rotas dos arquivos
  */
-var Hoek = require('hoek');
+var Hoek   = require('hoek');
 var loader = require('../util/loader')
 
 /**
