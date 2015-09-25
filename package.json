@@ -11,8 +11,11 @@
   "author": "esc",
   "license": "ISC",
   "dependencies": {
+    "boom": "^2.9.0",
     "hapi": "^10.0.0",
     "hoek": "^2.15.0",
+    "i18n": "^0.5.0",
+    "joi": "^6.7.1",
     "sequelize": "^3.9.0",
     "sqlite3": "^3.1.0"
   },
