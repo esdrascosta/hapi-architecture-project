@@ -12,6 +12,5 @@ loader( __dirname , function(file){
 });
 
 db.sequelize = sequelize;
-db.Sequelize = Sequelize;
 
 module.exports = db;

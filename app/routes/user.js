@@ -1,42 +1,68 @@
 //TODO utilizar joi para validação das rotas
-var User = require('../controllers').user;
+var UserCtrl = require('../controllers').user;
+var userCtrl = UserCtrl();
 var Joi = require('joi');
+
+var schemaParams = Joi.object().keys({
+    userId : Joi.number().integer()
+});
+
+var schemaPayload =  Joi.object().keys({
+  name: Joi.string(),
+  age: Joi.number().integer()
+});
 
 module.exports = [
   {
     method: 'POST',
     path: '/user',
-    handler: User.create,
+    handler: userCtrl.create,
     config:{
         payload:{
           allow: 'application/json'
         },
         validate:{
-          payload:{
-              name: Joi.string(),
-              age: Joi.number().integer()
-          }
+          payload: schemaPayload
         }
     }
   },
   {
     method: 'GET',
     path: '/user',
-    handler: User.getAll,
+    handler: userCtrl.getAll,
   },
   {
     method: 'GET',
     path: '/user/{userId}',
-    handler: User.getOne,
+    handler: userCtrl.getOne,
+    config:{
+      validate:{
+        params: schemaParams
+      }
+    }
   },
   {
     method: 'PUT',
     path: '/user/{userId}',
-    handler: User.update
+    handler: userCtrl.update,
+    config:{
+      payload:{
+        allow: 'application/json'
+      },
+      validate:{
+        params: schemaParams,
+        payload: schemaPayload
+      }
+    }
   },
   {
     method: 'DELETE',
     path: '/user/{userId}',
-    handler: User.remove
+    handler: userCtrl.remove,
+    config:{
+      validate:{
+        params: schemaParams
+      }
+    }
   }
 ]

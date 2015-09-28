@@ -1,4 +1,5 @@
 {
   "hello" : "Hello",
-  "unexpected_error" : "Unexpected error"
+  "unexpected_error" : "Unexpected error",
+  "%s not_found" : "%s not found"
 }

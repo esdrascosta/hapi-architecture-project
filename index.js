@@ -7,7 +7,8 @@ var i18n = require('i18n');
 //opcional: pode-se configurar a detecção do locale da request
 i18n.configure({
     locales:['en', 'pt'],
-    directory: __dirname + '/app/locales'
+    directory: __dirname + '/app/locales',
+    defaultLocale: 'pt'
 });
 
 server.connection({
