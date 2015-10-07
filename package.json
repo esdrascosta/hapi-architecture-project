@@ -6,7 +6,7 @@
   "scripts": {
     "debug": "./node_modules/.bin/nodemon --debug-brk index.js",
     "dev": "./node_modules/.bin/nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test"
   },
   "author": "esc",
   "license": "ISC",
