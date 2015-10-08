@@ -1,6 +1,5 @@
 var Hapi   = require('hapi');
 var server = new Hapi.Server();
-var models = require("./lib/models");
 var Routes = require('./lib/routes');
 var i18n = require('i18n');
 
