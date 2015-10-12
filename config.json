@@ -5,7 +5,8 @@
   },
   "test": {
     "dialect": "sqlite",
-    "storage": "./db.development.sqlite"
+    "storage": "./db.test.sqlite",
+    "logging" : false
   },
   "production": {
     "username": "root",
