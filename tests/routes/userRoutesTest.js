@@ -6,7 +6,16 @@ let model = require('../../lib/models')
 
 describe('User Routes', () => {
 
-  beforeEach(function() {
+  let optionCreate = {
+    method:'POST',
+    payload : {
+       name : 'Esdras',
+       age : 27
+    },
+    url: '/user'
+  };
+
+  before(function() {
     model.User.sync();
   });
 
@@ -16,7 +25,13 @@ describe('User Routes', () => {
 
  context('when server is ready', () => {
 
-  it('should respose to GET resquest without error', (done) => {
+   function createUser(callback){
+     server.inject(optionCreate, (response)=>{
+       callback(response);
+     })
+   }
+
+  it('should response to GET resquest without error', (done) => {
 
       let options = {
         method : 'GET',
@@ -30,23 +45,55 @@ describe('User Routes', () => {
       })
   });
 
-  it('should respose to POST resquest without error', (done) => {
+  it('should response to POST resquest without error', (done) => {
 
-      let options = {
-        method : 'POST',
-        payload: {
-          name : 'Esdras',
-          age : 28
-        },
-        url: "/user"
-      }
-
-      server.inject(options, (response)=>{
+      createUser( (response) => {
         response.statusCode.should.equal(201);
         response.headers['content-type'].should.equal('application/json; charset=utf-8');
         done();
       })
-
     });
+
+   it('should response to DELETE request without error', (done) => {
+
+     let optionDelete = {
+       method:'DELETE'
+     };
+
+     createUser((response) => {
+
+       let userID = JSON.parse(response.payload);
+       optionDelete['url'] = `/user/${userID.id}`;
+
+       server.inject(optionDelete, (res) => {
+         res.statusCode.should.equal(204);
+         done();
+       });
+
+     });
+
+   });
+
+   it('should response to PUT request without error', (done) => {
+
+     let optionsUpdate = {
+       method:'PUT',
+       payload : {
+         age : 50,
+         name : 'Fulano'
+       }
+     };
+
+     createUser((response) => {
+        let userID = JSON.parse(response.payload);
+        optionsUpdate['url']= `/user/${userID.id}`;
+
+        server.inject(optionsUpdate, (res) => {
+          res.statusCode.should.equal(204);
+          done();
+        });
+     });
+   });
+
   });
 });
